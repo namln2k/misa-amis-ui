@@ -1,0 +1,41 @@
+* {
+    font-family: notosans-regular;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    background-color: inherit;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #b8bcc3;
+}
+
+@font-face {
+    font-family: "notosans-bold";
+    src: url("../../assets/fonts/notosans-bold.3ede5aff.woff2");
+}
+
+@font-face {
+    font-family: "notosans-italic";
+    src: url("../../assets/fonts/notosans-italic.1c1aaac9.woff2");
+}
+
+@font-face {
+    font-family: "notosans-regular";
+    src: url("../../assets/fonts/notosans-regular.2cb88a13.woff2");
+}
+
+@font-face {
+    font-family: "notosans-semibold";
+    src: url("../../assets/fonts/notosans-semibold.df3e6dc4.woff2");
+}
+

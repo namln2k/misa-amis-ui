@@ -1,0 +1,65 @@
+.sidebar {
+    width: 178px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #393a3d;
+}
+
+.sidebar-header {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-header .menu-icon {
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -424px -86px;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.sidebar-header .logo {
+    background: url('../../assets/img/Logo_Module_TiengViet_White.66947422.svg');
+	width: 96px;
+	height: 32px;
+    background-size: cover;
+}
+
+.sidebar-menu {
+    height: calc(100% - 48px);
+    padding-top: 14px;
+}
+
+.sidebar-menu-item {
+    height: 42px;
+    padding-left: 12px;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sidebar-menu-item:hover {
+    background-color: #5d5d61;
+}
+
+.sidebar-menu-item.active {
+    background-color: #5d5d61;
+}
+
+.sidebar-menu-item .dashboard {
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -33px -1630px;
+	width: 18px;
+	height: 20px;
+    margin-right: 12px;
+}
+
+.sidebar-menu-item .cash {
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -78px -1631px;
+	width: 18px;
+	height: 20px;
+    margin-right: 12px;
+}

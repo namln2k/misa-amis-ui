@@ -1,0 +1,22 @@
+.base-destroy-button {
+    height: 40px;
+    width: 100px;
+    padding-left: 24px;
+    padding-right: 24px;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.base-destroy-button:hover {
+    background-color: #E9EBEE
+    ;
+}
+
+.base-destroy-button:active {
+    background-color: #F65454;
+}

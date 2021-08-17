@@ -1,0 +1,76 @@
+.header {
+    width: calc(100% - 178px);
+    height: 48px;
+    position: absolute;
+    top: 0;
+    left: 178px;
+    display: flex;
+}
+
+.header .header-left {
+    margin: auto 10px;
+    display: flex;
+    align-items: center;
+}
+
+.header-left .menu-icon {
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -843px -30px;
+	width: 24px;
+	height: 24px;
+}
+
+.header-left .branch-name {
+    margin-left: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+}
+
+.branch-name .down-arrow {
+    background: url("../../assets/img/Sprites.64af8f61.svg") no-repeat -80px -360px;
+	width: 14px;
+	height: 14px;
+    margin-left: 12px;
+    transform: rotate(90deg);
+}
+
+.header .header-right {
+    margin-left: auto;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-right .header-right-item {
+    display: flex;
+    cursor: pointer;
+}
+
+.header-right-item.notification-icon {
+    margin-right: 24px;
+    background: url("../../assets/img/Sprites.64af8f61.svg") no-repeat -788px -30px;
+	width: 22px;
+	height: 25px;
+}
+
+.header-right-item.avatar {
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -352px -894px;
+	width: 32px;
+	height: 32px;
+    border-radius: 100%;
+}
+
+.header-right-item.username {
+    max-width: 200px;
+    font-family: notosans-bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}

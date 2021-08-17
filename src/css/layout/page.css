@@ -1,0 +1,10 @@
+.page {
+    width: calc(100% - 218px);
+    height: calc(100vh - 48px);
+    position: absolute;
+    left: 178px;
+    top: 48px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #f4f5f8;
+}
