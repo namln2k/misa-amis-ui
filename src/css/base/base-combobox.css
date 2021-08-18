@@ -1,0 +1,125 @@
+.info-uniform {
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.info-uniform:focus {
+    outline: none;
+    border: 1px solid #01b075;
+}
+
+.info-uniform {
+    width: 100%;
+    height: 40px;
+}
+
+.info-uniform.combobox-input {
+    border: none;
+    width: 100%;
+    height: 40px;
+}
+
+.options {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    display: none;
+    background-color: #fff;
+    pointer-events: none;
+    border: 1px solid #bbbbbb;
+    border-top: none;
+}
+
+.open .options {
+    opacity: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    pointer-events: all;
+}
+
+.options .option {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 13px;
+    line-height: 36px;
+    cursor: pointer;
+}
+
+.checkmark {
+    display: inline-block;
+    transform: rotate(45deg);
+    height: 8px;
+    width: 4px;
+    margin-left: 8px;
+    margin-right: 12px;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+}
+
+.options .option:hover {
+    cursor: pointer;
+    background-color: #E9EBEE;
+}
+
+.options .option:hover .checkmark, .options .option.hovered .checkmark {
+    border-bottom: 2px solid #E9EBEE;
+    border-right: 2px solid #E9EBEE;
+}
+
+.options .option.active {
+    background-color: #01b075;
+}
+
+.options .option.hovered {
+    background-color: #E9EBEE !important;
+}
+
+.options .option.active div {
+    color: #fff;
+}
+
+.border-green {
+    border-color: #01b075 !important;
+}
+
+.border-red {
+    border-color: #f00 !important;
+}
+
+.input-wrapper {
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper .combobox-input {
+    border-right: 1px solid #bbbbbb;
+}
+
+.arrow-button {
+    width: 48px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.arrow-button svg {
+    transition-duration: 0.2s;
+    transform: rotate(0deg);
+}
+
+.arrow-button svg.open {
+    transform: rotate(180deg);
+}

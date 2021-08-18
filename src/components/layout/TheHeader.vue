@@ -3,7 +3,7 @@
     <div class="header-left">
       <div class="menu-icon"></div>
       <div class="branch-name">
-          CÔNG TY TNHH SẢN XUẤT - THƯƠNG MẠI - DỊCH VỤ QUI PHÚC
+          CÔNG TY CỔ PHẦN MISA
           <div class="down-arrow"></div>
       </div>
     </div>

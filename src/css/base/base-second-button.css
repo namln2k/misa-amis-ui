@@ -1,21 +1,21 @@
 .base-second-button {
-    height: 40px;
-    width: 100px;
-    padding-left: 24px;
-    padding-right: 24px;
-    color: #000000;
+    height: 36px;
+    padding: 8px 20px;
+    border: 1px solid #8d9096;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #bbbbbb;
-    border-radius: 4px;
+    font-weight: 600;
+    background-color: transparent;
+    border-radius: 3px;
+    transition: all .2s ease;
+    box-sizing: border-box;
     cursor: pointer;
 }
 
 .base-second-button:hover {
-    background-color: #E9EBEE;
+    background-color: #d2d3d6;
+    ;
 }
 
 .base-second-button:active {
-    background-color: #01B075;
+    background-color: #bbbcbc;
 }

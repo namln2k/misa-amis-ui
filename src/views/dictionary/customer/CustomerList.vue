@@ -1,5 +1,15 @@
 <template>
   <div>
-    <p>Đây là trang khách hàng</p>
+    <EmployeeDetail></EmployeeDetail>
   </div>
 </template>
+
+<script>
+import EmployeeDetail from "../employee/EmployeeDetail.vue"
+
+export default {
+  components: {
+    EmployeeDetail
+  }
+}
+</script>

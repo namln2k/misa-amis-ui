@@ -1,13 +1,13 @@
 .base-button {
-    height: 36px;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
+    border: 1px solid transparent;
+    color: #fff;
     background-color: #2ca01c;
+    font-weight: 600;
+    height: 36px;
+    padding: 8px 20px;
+    border-radius: 3px;
+    transition: all .2s ease;
+    box-sizing: border-box;
     cursor: pointer;
 }
 
