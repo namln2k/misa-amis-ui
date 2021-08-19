@@ -37,29 +37,146 @@
     padding-left: 16px;
     display: flex;
     align-items: center;
-    color: #ffffff;
     text-decoration: none;
     cursor: pointer;
 }
 
-.sidebar-menu-item:hover {
+.sidebar-menu-item p {
+    color: #ffffff;
+}
+
+.sidebar-menu-item:hover, .sidebar-menu-item.active {
     background-color: #5d5d61;
 }
 
-.sidebar-menu-item.active {
-    background-color: #5d5d61;
+.sidebar-menu-item.active p {
+    font-weight: 600;
+}
+
+.sidebar-menu-item .icon {
+	width: 24px;
+	height: 24px;
+    margin-right: 10px;
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat;
 }
 
 .sidebar-menu-item .dashboard {
-    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -33px -1630px;
-	width: 18px;
-	height: 20px;
-    margin-right: 12px;
+    background-position: -30px -1628px;
+}
+
+.sidebar-menu-item.active .dashboard {
+    background-position: -30px -1585px;
 }
 
 .sidebar-menu-item .cash {
-    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -78px -1631px;
-	width: 18px;
-	height: 20px;
-    margin-right: 12px;
+    background-position: -73px -1628px;
 }
+
+.sidebar-menu-item.active .cash {
+    background-position: -73px -1585px;
+}
+
+.sidebar-menu-item .deposit {
+    background-position: -117px -1628px;
+}
+
+.sidebar-menu-item.active .deposit {
+    background-position: -117px -1585px;
+}
+
+.sidebar-menu-item .buy {
+    background-position: -161px -1628px;
+}
+
+.sidebar-menu-item.active .buy {
+    background-position: -161px -1585px;
+}
+
+.sidebar-menu-item .sell {
+    background-position: -204px -1628px;
+}
+
+.sidebar-menu-item.active .sell {
+    background-position: -204px -1585px;
+}
+
+.sidebar-menu-item .receipt {
+    background-position: -249px -1628px;
+}
+
+.sidebar-menu-item.active .receipt {
+    background-position: -249px -1585px;
+}
+
+.sidebar-menu-item .warehouse {
+    background-position: -291px -1628px;
+}
+
+.sidebar-menu-item.active .warehouse {
+    background-position: -291px -1585px;
+}
+
+.sidebar-menu-item .tool {
+    background-position: -336px -1628px;
+}
+
+.sidebar-menu-item.active .tool {
+    background-position: -336px -1585px;
+}
+
+.sidebar-menu-item .fixed-assets {
+    background-position: -378px -1630px;
+}
+
+.sidebar-menu-item.active .fixed-assets {
+    background-position: -378px -1587px;
+}
+
+.sidebar-menu-item .tax {
+    background-position: -423px -1630px;
+}
+
+.sidebar-menu-item.active .tax {
+    background-position: -423px -1587px;
+}
+
+.sidebar-menu-item .price {
+    background-position: -467px -1628px;
+}
+
+.sidebar-menu-item.active .price {
+    background-position: -467px -1585px;
+}
+
+.sidebar-menu-item .sumary {
+    background-position: -510px -1628px;
+}
+
+.sidebar-menu-item.active .sumary {
+    background-position: -510px -1585px;
+}
+
+.sidebar-menu-item .budget {
+    background-position: -378px -1659px;
+}
+
+.sidebar-menu-item.active .budget {
+    background-position: -422px -1659px;
+}
+
+.sidebar-menu-item .report {
+    background-position: -547px -1628px;
+}
+
+.sidebar-menu-item.active .report {
+    background-position: -547px -1585px;
+}
+
+.sidebar-menu-item .finance-analyze {
+    background-position: -204px -1664px;
+}
+
+.sidebar-menu-item.active .finance-analyze {
+    background-position: -248px -1664px;
+}
+

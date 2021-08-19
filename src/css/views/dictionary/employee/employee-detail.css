@@ -86,19 +86,42 @@
     box-sizing: border-box;
 }
 
+.w100 {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .w60-100 {
     width: 60%;
     box-sizing: border-box;
 }
 
+.p-r-6 {
+    padding-right: 6px;
+}
+
+.p-r-26 {
+    padding-right: 26px;
+}
+
 .row-input {
     width: 100%;
+    display: flex;
+    align-items: flex-end;
     padding-bottom: 12px;
+}
+
+.body-upper {
+    display: flex;
 }
 
 .body-upper .upper-left {
     width: 50%;
     padding-right: 26px;
+}
+
+.body-upper .upper-right {
+    width: 50%;
 }
 
 .content-footer .divide {
