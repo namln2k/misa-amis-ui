@@ -117,14 +117,20 @@ tbody tr td {
 }
 
 .function-cell .function {
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    box-sizing: border-box;
     cursor: pointer;
 }
 
 .function .function-text {
     height: 100%;
+    display: flex;
+    align-items: center;
     font: 600 13.3333px Arial;
     color: #0075c0;
 }

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import CustomerList from '../views/dictionary/customer/CustomerList.vue'
 import EmployeeList from '../views/dictionary/employee/EmployeeList.vue'
-import Home from '../views/base/Home.vue'
+import Home from '../views/common/Home.vue'
 
 Vue.use(VueRouter)
 

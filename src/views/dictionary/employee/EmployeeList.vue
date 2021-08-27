@@ -1,10 +1,23 @@
 <template>
   <div class="content">
     <BaseLoading v-if="this.isLoading"></BaseLoading>
+    <EmployeeDetail
+      v-if="this.isFormShown"
+      @closeForm="closeForm"
+      @cancelForm="cancelForm"
+      @reloadData="loadData"
+      :departmentData="this.departmentData"
+      :formData="this.formData"
+      ref="employeeForm"
+      :editMode="this.editMode"
+    ></EmployeeDetail>
     <div class="content-header">
       Nhân viên
       <div class="header-right"></div>
-      <BaseButton text="Thêm mới nhân viên"></BaseButton>
+      <BaseButton
+        text="Thêm mới nhân viên"
+        @click.native="showNewForm"
+      ></BaseButton>
     </div>
     <div class="grid-data">
       <div class="grid-header">
@@ -57,7 +70,7 @@
                 <td>{{ employee.BankBranchName }}</td>
                 <td class="function-cell">
                   <div class="function">
-                    <div class="function-text">Sửa</div>
+                    <div @click="editEmployee(employee.EmployeeId)" class="function-text">Sửa</div>
                     <div class="function-arrow">
                       <div class="arrow-icon"></div>
                     </div>
@@ -100,11 +113,13 @@
 <script>
 import BaseButton from "../../../components/base/BaseButton.vue";
 import EmployeeApi from "../../../api/EmployeeApi";
-import { Utils } from "../../../scripts/utils";
+import Utils from "../../../scripts/utils";
 import DepartmentApi from "../../../api/DepartmentApi";
 import BaseLoading from "../../../components/base/BaseLoading.vue";
 import BaseDropdown from "../../../components/base/BaseDropdown.vue";
 import BasePagination from "../../../components/base/BasePagination.vue";
+import EmployeeDetail from "../employee/EmployeeDetail.vue";
+import Employee from "../../../scripts/employee";
 
 export default {
   name: "EmployeeList",
@@ -113,12 +128,34 @@ export default {
     BaseLoading,
     BaseDropdown,
     BasePagination,
+    EmployeeDetail,
   },
   data() {
     return {
       isLoading: false,
+      isFormShown: false,
+      editMode: "add",
       utils: Object,
       departmentData: [],
+      newEmployeeCode: "",
+      formData: {
+        EmployeeCode: "",
+        EmployeeName: "",
+        DepartmentName: "",
+        EmployeePosition: "",
+        DateOfBirth: "",
+        Gender: -1,
+        IdentityNumber: "",
+        IdentityDate: "",
+        IdentityPlace: "",
+        Address: "",
+        PhoneNumber: "",
+        TelephoneNumber: "",
+        Email: "",
+        BankAccountNumber: "",
+        BankName: "",
+        BankBranchName: "",
+      },
       selectedDisplayOption: "10 bản ghi",
       displayOptions: [
         { value: 10, text: "10 bản ghi" },
@@ -136,44 +173,52 @@ export default {
     };
   },
   created() {
-    this.utils = new Utils(this.departmentData);
+    this.utils = new Utils();
+    this.getNewEmployeeCode();
     this.getDepartmentData();
     this.getEmployeesFilterPaging(this.currentPage, this.pageSize);
   },
+
   methods: {
     // Lấy danh sách nhân viên từ backend
-    getEmployeesFilterPaging(currentPage, pageSize) {
+    async getEmployeesFilterPaging(currentPage, pageSize) {
       this.isLoading = true;
       let params = {
         employeeFilter: "",
         pageIndex: currentPage,
         pageSize: pageSize,
       };
-      EmployeeApi.getEmployeesFilterPaging(params).then((response) => {
-        this.employees = [];
-        let employeeList = response.data.Employees;
-        employeeList.forEach((employee) => {
-          employee.DateOfBirth = this.utils.FormatDateDDMMYYYY(
-            employee.DateOfBirth
-          );
-          employee.GenderName = this.utils.GetGenderName(employee.Gender);
-          employee.DepartmentName = this.utils.GetDepartmentName(
-            employee.DepartmentId,
-            this.departmentData
-          );
-          employee.checked = false;
-          this.employees.push(employee);
-          this.totalRecord = response.data.TotalRecord;
-          this.totalPage = response.data.TotalPage;
+      await EmployeeApi.getEmployeesFilterPaging(params)
+        .then((response) => {
+          this.employees = [];
+          let employeeList = response.data.Employees;
+          employeeList.forEach((employee) => {
+            employee.DateOfBirth = this.utils.FormatDateDDMMYYYY(
+              employee.DateOfBirth
+            );
+            employee.GenderName = this.utils.GetGenderName(employee.Gender);
+            employee.DepartmentName = this.utils.GetDepartmentName(
+              employee.DepartmentId,
+              this.departmentData
+            );
+            employee.checked = false;
+            this.employees.push(employee);
+            this.totalRecord = response.data.TotalRecord;
+            this.totalPage = response.data.TotalPage;
+          });
+          this.isLoading = false;
+        })
+        .catch((error) => {
+          console.log(error);
+          this.isLoading = false;
         });
-        this.isLoading = false;
-      });
     },
 
     // Lấy dữ liệu phòng ban và bỏ vào data của component
-    getDepartmentData() {
+    async getDepartmentData() {
       this.isLoading = true;
-      DepartmentApi.getAll().then((response) => {
+      await DepartmentApi.getAll().then((response) => {
+        this.departmentData = [];
         response.data.forEach((d) => {
           let dep = {};
           dep.text = d.DepartmentName;
@@ -183,11 +228,18 @@ export default {
       });
     },
 
-    // Thay đổi số trang hiển thị khi giá trị trong combobox bị thay đổi
-    changeValue(id, newValue) {
-      if (id == "displayOption") {
-        this.displayOption = newValue;
-      }
+    // Láy mã nhân viên mới
+    async getNewEmployeeCode() {
+      await EmployeeApi.getNewEmployeeCode().then((response) => {
+        this.newEmployeeCode = response.data;
+      });
+    },
+
+    // Lấy dữ liệu
+    loadData() {
+      this.getNewEmployeeCode();
+      this.getDepartmentData();
+      this.getEmployeesFilterPaging(this.currentPage, this.pageSize);
     },
 
     changeDisplayOption(option) {
@@ -202,6 +254,40 @@ export default {
       this.currentPage = page;
       this.getEmployeesFilterPaging(this.currentPage, this.pageSize);
     },
+
+    showNewForm() {
+      this.formData = new Employee();
+      this.formData.EmployeeCode = this.newEmployeeCode;
+      this.isFormShown = true;
+    },
+
+    closeForm() {
+      this.getNewEmployeeCode();
+      this.getEmployeesFilterPaging(this.currentPage, this.pageSize);
+      this.isFormShown = false;
+    },
+
+    cancelForm() {
+      this.isFormShown = false;
+    },
+
+    async editEmployee(employeeId) {
+      console.log(employeeId);
+      this.editMode = "edit"
+      await EmployeeApi.getById(employeeId).then(response => {
+        let employee = response.data;
+        if (employee != null) {
+          console.log(employee);
+          this.formData = employee;
+          this.formData.DepartmentName = this.departmentData.find(opt => {
+            return opt.value == this.formData.DepartmentId;
+          }).text;
+          this.formData.DateOfBirth = this.utils.FormatDateYYYYMMDD(this.formData.DateOfBirth);
+          this.formData.IdentityDate = this.utils.FormatDateYYYYMMDD(this.formData.IdentityDate);
+        }
+      });
+      this.isFormShown = true;
+    }
   },
 };
 </script>

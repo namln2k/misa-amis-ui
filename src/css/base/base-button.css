@@ -11,8 +11,9 @@
     cursor: pointer;
 }
 
-.base-button:hover {
+.base-button:hover, .base-button:focus {
     background-color: #35bf22;
+    outline: none;
 }
 
 .base-button:active {

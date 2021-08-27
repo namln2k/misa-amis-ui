@@ -1,15 +1,14 @@
 <template>
   <div>
-    <EmployeeDetail></EmployeeDetail>
+    <p>Overlap this please</p>
   </div>
 </template>
 
 <script>
-import EmployeeDetail from "../employee/EmployeeDetail.vue"
 
 export default {
+  name: "CustomerList",
   components: {
-    EmployeeDetail
   }
-}
+};
 </script>

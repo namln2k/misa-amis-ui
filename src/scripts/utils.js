@@ -18,10 +18,23 @@ class Utils {
         return formatedDate;
     }
 
+    // Định dạng ngày theo DD/MM/YYYY
+    FormatDateYYYYMMDD(date) {
+        let formatedDate = moment(date).format("YYYY-MM-DD");
+        if (formatedDate == "Invalid date")
+            return "";
+        return formatedDate;
+    }
+
+    // Lấy giá trị ngày hôm nay
+    Today() {
+        return moment();
+    }
+
     // Lấy giá trị GenderName theo GenderValue
     GetGenderName(genderValue) {
         if (genderValue == null)
-            return ""
+            return "Khác"
         return this.genderData.find(opt => {
             return opt.value == genderValue;
         }).text;
@@ -37,4 +50,4 @@ class Utils {
     }
 }
 
-export { Utils }
+export default Utils

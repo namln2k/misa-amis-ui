@@ -8,7 +8,7 @@
         :focus="openOptions"
         :value="selectedOption"
       />
-      <div class="dropdown-arrow" @click="rotateArrow">
+      <div class="dropdown-arrow" @click="onArrowClick">
         <div class="arrow-icon" ref="arrowIcon"></div>
       </div>
     </div>
@@ -46,11 +46,15 @@ export default {
     };
   },
   computed: {},
-  methods: {
-    rotateArrow() {
-      let deg = this.openOptions ? 0 : 180;
+  watch: {
+    openOptions: function () {
+      let deg = this.openOptions ? 180 : 0;
       let arrow = this.$refs.arrowIcon;
       arrow.style.transform = "rotate(" + deg + "deg)";
+    },
+  },
+  methods: {
+    onArrowClick() {
       this.openOptions = !this.openOptions;
     },
     selectOption(option) {
@@ -73,7 +77,7 @@ export default {
       let inputWrapper = this.$refs.dropdown;
       if (inputWrapper != null) {
         if (!inputWrapper.contains(target)) {
-          this.onBlur();
+          this.openOptions = false;
         }
       }
     });

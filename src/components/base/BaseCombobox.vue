@@ -1,15 +1,15 @@
 <template>
-  <div :class="{ open: openOptions }">
-    <div>{{ inputLabel }}</div>
+  <div :class="{ open: openOptions }" class="dropdown-container field">
+    <div class="label">{{ label }}</div>
     <div
       ref="inputWrapper"
-      class="input-wrapper"
+      class="input-wrapper dropdown"
       :class="{ 'border-red': !isValidate, 'border-green': isFocus }"
     >
       <input
         :id="id"
         ref="inputField"
-        class="info-uniform combobox-input"
+        class="option-input"
         type="text"
         autocomplete="off"
         :value="content"
@@ -26,14 +26,10 @@
         @keydown.enter="enter"
         @keydown.down="down"
         @keydown.up="up"
-        tabindex=11
+        tabindex="2"
       />
-      <div
-        class="arrow-button"
-        :class="{ open: showAll }"
-        @click="showAllOptions"
-      >
-        V
+      <div class="dropdown-arrow" @click="showAllOptions">
+        <div class="arrow-icon" ref="arrowIcon"></div>
       </div>
     </div>
     <div class="options">
@@ -55,7 +51,7 @@
 </template>
 <script>
 export default {
-  name: "AutoComplete",
+  name: "BaseCombobox",
   data() {
     return {
       open: false,
@@ -78,19 +74,19 @@ export default {
       required: true,
     },
     id: {
-        type: String,
-        required: false,
+      type: String,
+      required: false,
     },
-    inputLabel: {
-        type: String,
-        required: false,
+    label: {
+      type: String,
+      required: false,
     },
   },
 
   computed: {
     matches() {
       if (!this.showAll) {
-        return this.options.filter((obj) => {
+        return this.options.filter(obj => {
           if (this.content != null && this.content != "") {
             return (
               obj.text
@@ -186,6 +182,14 @@ export default {
       this.hovered = "";
       this.isValidate = true;
     },
+    getValue() {
+      if (this.selected == "") {
+        return null;
+      }
+      return this.options.find(opt => {
+        return opt.text == this.selected;
+      }).value;
+    }
   },
 
   mounted() {
@@ -205,12 +209,12 @@ export default {
   watch: {
     content: function (newVal) {
       this.selected = newVal;
-      this.$emit("changeValue", this.id, newVal);
     },
   },
 };
 </script>
 
 <style scoped>
-@import url("../../css/base/base-combobox.css");
+@import url("../../css/base/base-input.css");
+@import url("../../css/base/base-dropdown.css");
 </style>

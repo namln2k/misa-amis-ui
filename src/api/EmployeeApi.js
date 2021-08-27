@@ -12,6 +12,7 @@ class EmployeeApi extends BaseApi {
     getEmployeesFilterPaging(parameters) {
         let config = {
             params: parameters,
+            timeout: 1000 * 20,
         };
         return Repository.get(`${this.controler}/filter-paging`, config);
     }

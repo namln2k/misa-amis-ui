@@ -38,15 +38,15 @@
     transition-duration: 0.3s;
 }
 
-.options {
+.dropdown-container .options {
+    min-height: 160px;
     width: calc(100% + 2px);
-    height: 160px;
     box-sizing: border-box;
     position: relative;
     display: none;
 }
 
-.open .options {
+.dropdown-container.open .options {
     position: absolute;
     display: flex;
     flex-direction: column;

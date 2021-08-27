@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     font-weight: 600;
+    position: relative;
 }
 
 .field .label {
@@ -19,6 +20,16 @@
     border-radius: 2px;
 }
 
+.field input:hover {
+    outline: 1px solid #e2e2e2;
+    cursor: text;
+}
+
+.field input:focus {
+    border-color: #2ca01c;
+    outline: none;
+}
+
 .field .date-input {
     width: 100%;
     height: 32px;
@@ -34,12 +45,111 @@
     box-sizing: border-box;
 }
 
-.field .gender-options {
-    padding-top: 5px;
-    padding-bottom: 6px;
+.gender-field .gender-options {
+    height: 32px;
     display: flex;
+    align-items: center;
 }
 
-.gender-options .option-male {
-    margin-right: 20px;
+.option-male, .option-female {
+    margin-right: 25px;
+    position: relative;
+    padding-left: 30px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    cursor: pointer;
+}
+
+label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+label input ~ .radio-border {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+}
+
+label input:focus ~ .radio-border {
+    border: 1px solid #a4dfff;
+}
+
+label .radio {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #afafaf;
+}
+
+label .radio-background {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 7px;
+    left: 7px;
+    border-radius: 50%;
+}
+
+label input:checked ~ .radio-background {
+    background-color: #2ca01c;
+}
+
+label input:checked ~ .radio {
+    border-color: #2ca01c;
+}
+
+.border-green {
+    border-color: #01b075 !important;
+}
+
+.border-red {
+    border-color: #ff0000 !important;
+}
+
+.input-wrapper {
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.field .options {
+    min-height: 0 !important;
+    position: relative;
+    display: none;
+}
+
+.field.open .options {
+    opacity: 1;
+    position: absolute;
+    top: 58px;
+    display: flex;
+    border: 1px solid #bbbbbb;
+    flex-direction: column;
+    z-index: 4;
+    font-weight: 400;
+}
+
+.options .option:hover, .options .option.hovered {
+    background-color: #ebedf0;
+    color: #2ca01c;
+}
+
+.options .option.active {
+    background-color: #2ca01c !important;
+    color: #ffffff !important;
 }
